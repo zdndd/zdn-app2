@@ -1,6 +1,6 @@
 import React from "react";
 import { User } from "./search-panel";
-import { Table } from "antd";
+import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 
 export interface Project {
@@ -11,16 +11,15 @@ export interface Project {
   organization: string;
   created: number;
 }
-interface ListProps {
+interface ListProps extends TableProps<Project> {
   users: User[];
-  list: Project[];
 }
 
-export const List = ({ list, users }: ListProps) => {
+export const List = ({ users, ...props }: ListProps) => {
   return (
     <Table
       pagination={false}
-      dataSource={list}
+      {...props}
       columns={[
         { title: "名称", dataIndex: "name" },
         { title: "部门", dataIndex: "organization" },
