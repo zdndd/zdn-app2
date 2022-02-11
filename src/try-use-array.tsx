@@ -14,7 +14,7 @@ export const TsReactTest = () => {
       <button onClick={() => removeIndex(0)}>remove</button>
       <button onClick={() => clear()}>clear</button>
       {value.map((person, index) => (
-        <div>
+        <div key={index}>
           <span>{index}</span> - <span>{person.name}</span>
         </div>
       ))}

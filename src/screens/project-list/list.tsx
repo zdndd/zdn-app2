@@ -3,6 +3,7 @@ import { User } from "./search-panel";
 import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 import { Project } from "../../types/project";
+import { Link } from "react-router-dom";
 interface ListProps extends TableProps<Project> {
   users: User[];
 }
@@ -13,7 +14,15 @@ export const List = ({ users, ...props }: ListProps) => {
       pagination={false}
       {...props}
       columns={[
-        { title: "名称", dataIndex: "name" },
+        {
+          title: "名称",
+          dataIndex: "name",
+          render(value, project) {
+            return (
+              <Link to={`projects/${String(project.id)}`}>{project.name}</Link>
+            );
+          },
+        },
         { title: "部门", dataIndex: "organization" },
         {
           title: "负责人",
