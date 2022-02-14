@@ -7,15 +7,11 @@ export const Test = () => {
   const add = () => setNum(num + 1);
 
   useMount(() => {
-    setInterval(() => {
-      console.log("aaa", num);
-    }, 1000);
+    setInterval(() => {}, 1000);
   });
 
   useEffect(() => {
-    return () => {
-      console.log(num);
-    };
+    return () => {};
   });
 
   return (

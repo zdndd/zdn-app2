@@ -62,7 +62,6 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
   const oldTitle = useRef(document.title).current;
   // 页面加载时: 旧title
   // 加载后：新title
-  console.log("old:", oldTitle);
   useEffect(() => {
     document.title = title;
   }, [title]);
@@ -70,7 +69,6 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
   useEffect(() => {
     return () => {
       if (!keepOnUnmount) {
-        console.log("卸载时的old：", oldTitle);
         // 如果不指定依赖，读到的就是旧title
         document.title = oldTitle;
       }
