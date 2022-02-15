@@ -1,3 +1,4 @@
+import "../../wdyr";
 import React from "react";
 import { useState } from "react";
 import { SearchPanel } from "./search-panel";
@@ -16,7 +17,8 @@ export const ProjectListScreen = () => {
     name: "",
     personId: "",
   });
-  const param = useUrlQueryParam(["name", "personId"]);
+  const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
+  const [param] = useUrlQueryParam(keys);
   const {
     isLoading,
     error,
@@ -44,6 +46,8 @@ export const ProjectListScreen = () => {
     </Container>
   );
 };
+
+// ProjectListScreen.whyDidYouRender = true;
 
 const Container = styled.div`
   padding: 3.2rem;
