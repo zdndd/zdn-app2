@@ -13,12 +13,10 @@ import { useUrlQueryParam } from "../../utils/url";
 
 export const ProjectListScreen = () => {
   useDocumentTitle("项目列表", false);
-  const [, setParam] = useState({
-    name: "",
-    personId: "",
-  });
   const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
-  const [param] = useUrlQueryParam(keys);
+  const [param, setParam] = useUrlQueryParam(keys);
+  console.log("----------");
+  console.log(param);
   const {
     isLoading,
     error,
